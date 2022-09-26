@@ -22,11 +22,15 @@ final class MainBLEController: UIViewController {
     
     private var centralManager: CBCentralManager!
     private var fitbitPeripheral: CBPeripheral?
+    private var ecgTimer: Timer?
     
     private var heartRateMeasurementCharacteristic: CBCharacteristic?
+    private var ecgMeasurementCharacteristic: CBCharacteristic?
     private let heartRateMeasurementCharacteristicCBUUID = CBUUID(string: "2A37")
     private let bodySensorLocationCharacteristicCBUUID = CBUUID(string: "2A38")
     private var duoEK2uuidString: String = "0829D646-BE6E-BA8A-B8C1-7B2DF597C46A"
+    private var ER1uuidString: String = "85E8D5EF-894F-BEF9-40CE-835D97B8C2D3"
+    private let ecgCharacteristicUUID: CBUUID = CBUUID(string: "0734594a-a8e7-4b1a-a6b1-cd5243059a57")
     private var globalNotifiesCounter: Int = 0
     @Published private var isPeripheralConnnected: Bool = false
     
@@ -86,11 +90,16 @@ final class MainBLEController: UIViewController {
         }
     }
     
+    private func getByteArray(from characteristic: CBCharacteristic) {
+        guard let characteristicData = characteristic.value else { return }
+        let byteArray = [UInt8](characteristicData)
+        print("DEBUG: characteristic uuid: \(characteristic.uuid)")
+        print("DEBUG: Byte array: \(byteArray)")
+    }
+    
     private func heartRate(from characteristic: CBCharacteristic) -> Int {
         guard let characteristicData = characteristic.value else { return -1 }
         let byteArray = [UInt8](characteristicData)
-        print("DEBUG: Byte array: \(byteArray)")
-        print("DEBUG: Byte array[0] \(byteArray[0])")
         
         let firstBitValue = byteArray[0] & 0x01
         if firstBitValue == 0 {
@@ -104,6 +113,7 @@ final class MainBLEController: UIViewController {
         guard
             let fitbitPeripheral = self.fitbitPeripheral,
             let heartRateMeasurementCharacteristic = self.heartRateMeasurementCharacteristic
+            //let ecgMeasurementCharacteristic = self.ecgMeasurementCharacteristic
         else {
             return
         }
@@ -139,6 +149,10 @@ final class MainBLEController: UIViewController {
         setNotifyValueForBPM(true)
     }
     
+    @objc private func getRealECGdata() {
+        VTMProductURATUtils.shared.requestECGRealData()
+    }
+    
 }
 
 extension MainBLEController: CBCentralManagerDelegate {
@@ -166,10 +180,8 @@ extension MainBLEController: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print("-----------------------------------------")
         print("Peripheral: \(peripheral)")
-        print("Peripheral uuid: \(peripheral.identifier)")
-        print("Peripheral name: \(peripheral.name != nil ? peripheral.name! : "No device name information")")
         
-        //Establish connection
+        //Establish connection ?? duoEK2uuidString
         if peripheral.identifier.uuidString == duoEK2uuidString {
             fitbitPeripheral = peripheral
             guard let _ = self.fitbitPeripheral else { return }
@@ -181,13 +193,33 @@ extension MainBLEController: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Connected to ble device")
         
-//        VTMProductURATUtils.shared.delegate = self
-//        VTMProductURATUtils.shared.deviceDelegate = self
-//        VTMProductURATUtils.shared.peripheral = peripheral
-        
+        VTMProductURATUtils.shared.peripheral = peripheral
         isPeripheralConnnected = true
         fitbitPeripheral?.delegate = self
         fitbitPeripheral?.discoverServices(nil)
+        
+        
+        VTMProductURATUtils.shared.delegate = self
+        VTMProductURATUtils.shared.deviceDelegate = self
+        #warning("Read this")
+        ///when uncomment this two lines and timer below, app will track ecg from VTMProductUtils lib (also in bg mode (somehow???))
+        ///if this lines are commented, but timer is not you will receive an error 'characteristic != nil'
+        ///if this lines are commented and timer too, then you will be able to enable 'notify' for Heart rate in this app
+        
+//        VTMProductURATUtils.shared.notifyDeviceRSSI = true
+//        VTMProductURATUtils.shared.notifyHeartRate = true
+        
+//        if let _ = ecgTimer {
+//        } else {
+//            ecgTimer = Timer.scheduledTimer(
+//                timeInterval: 1.0,
+//                target: self,
+//                selector: #selector(getRealECGdata),
+//                userInfo: nil,
+//                repeats: true
+//            )
+//            RunLoop.main.add(ecgTimer!, forMode: .common)
+//        }
         
         startNotifiingButton.isEnabled = true
     }
@@ -209,14 +241,17 @@ extension MainBLEController: CBPeripheralDelegate {
         guard let services = peripheral.services else { return }
         print("Peripheral services")
         for service in services {
-            print("Service: \(service)")
-            peripheral.discoverCharacteristics([heartRateMeasurementCharacteristicCBUUID, bodySensorLocationCharacteristicCBUUID], for: service)
+            print("Service: \(service) and uuid: \(service.uuid.uuidString)")
+//            peripheral.discoverCharacteristics([heartRateMeasurementCharacteristicCBUUID, bodySensorLocationCharacteristicCBUUID], for: service)
+            peripheral.discoverCharacteristics(nil, for: service)
         }
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         print("-------------didDiscoverCharacteristicsFor--------------")
         guard let characteristics = service.characteristics else { return }
+        print("Service uuid: \(service.uuid.uuidString)")
+        print("Service characteristics: \(characteristics)")
         characteristics.forEach { characteristic in
             if characteristic.properties.contains(.read) {
                 print("\(characteristic.uuid): properties contains .read")
@@ -224,12 +259,22 @@ extension MainBLEController: CBPeripheralDelegate {
             }
             if characteristic.properties.contains(.notify) {
                 print("\(characteristic.uuid): properties contains .notify")
-                heartRateMeasurementCharacteristic = characteristic
+                if characteristic.uuid.uuidString == heartRateMeasurementCharacteristicCBUUID.uuidString {
+                    print("DEBUG: heartRateMeasurementCharacteristic found")
+                    heartRateMeasurementCharacteristic = characteristic
+                }
+                if characteristic.uuid.uuidString == ecgCharacteristicUUID.uuidString {
+                    print("DEBUG: ecgMeasurementCharacteristic found")
+                    ecgMeasurementCharacteristic = characteristic
+                }
             }
         }
     }
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        if let error = error {
+            print("DEBUG: Error: \(error)")
+        }
         switch characteristic.uuid {
         case bodySensorLocationCharacteristicCBUUID:
             print("-------------didUpdateValueFor--------------")
@@ -241,9 +286,11 @@ extension MainBLEController: CBPeripheralDelegate {
             let bpm = heartRate(from: characteristic)
             bpmRateLabel.text = String(describing: bpm)
             amountOfNotifiesLabel.text = String(describing: globalNotifiesCounter)
-//            error if call request from here
-//            VTMProductURATUtils.shared.requestECGRealData()
+            
             print("BPM: \(bpm)")
+        case ecgCharacteristicUUID:
+            print("DEBUG: Byte array must be generated")
+            getByteArray(from: characteristic)
         default:
             print("-------------didUpdateValueFor--------------")
             print("Unhandled type character...")
@@ -252,36 +299,49 @@ extension MainBLEController: CBPeripheralDelegate {
     
 }
 
-//extension MainBLEController: VTMURATUtilsDelegate {
-//
-//    @objc(util: commandCompletion: deviceType: response:)
-//    func util(_ util: VTMURATUtils, commandCompletion cmdType: u_char, deviceType: VTMDeviceType, response: Data?) {
-//        print("DEBUG: recieve call in \(#function)")
-//        switch deviceType {
-//        case VTMDeviceTypeECG:
-//            if cmdType == VTMECGCmdGetRealData.rawValue {
-//                guard let response = response else {
-//                    return
-//                }
-//                let realData = VTMBLEParser.parseRealTime(response)
-//                let waveForm = realData.waveform
-//                print(waveForm.wave_data)
-//            }
-//        default:
-//            print("Wrong device signature")
-//        }
-//    }
-//
-//    @objc(util:commandFailed:deviceType:failedType:)
-//    func util(_ util: VTMURATUtils, commandFailed cmdType: u_char, deviceType: VTMDeviceType, failedType type: VTMBLEPkgType) {
-//        print("DEBUG: recieve call in \(#function)")
-//    }
-//
-//}
-//
-//
-//extension MainBLEController: VTMURATDeviceDelegate {
-//
-//
-//
-//}
+extension MainBLEController: VTMURATUtilsDelegate {
+
+    @objc(util: commandCompletion: deviceType: response:)
+    func util(_ util: VTMURATUtils, commandCompletion cmdType: u_char, deviceType: VTMDeviceType, response: Data?) {
+        print("DEBUG: recieve call in \(#function)")
+        switch deviceType {
+        case VTMDeviceTypeECG:
+            if cmdType == VTMECGCmdGetRealData.rawValue {
+                guard let response = response else {
+                    return
+                }
+                let realData = VTMBLEParser.parseRealTime(response)
+                let waveForm = realData.waveform
+                print(waveForm.wave_data)
+            }
+        default:
+            print("Wrong device signature")
+        }
+    }
+
+    @objc(util:commandFailed:deviceType:failedType:)
+    func util(_ util: VTMURATUtils, commandFailed cmdType: u_char, deviceType: VTMDeviceType, failedType type: VTMBLEPkgType) {
+        print("DEBUG: recieve call in \(#function)")
+    }
+
+}
+
+
+extension MainBLEController: VTMURATDeviceDelegate {
+
+    @objc(utilDeployCompletion:)
+    func utilDeployCompletion(_ util: VTMURATUtils) {
+        print("utilDeployCompletion")
+    }
+    
+    @objc(utilDeployFailed:)
+    func utilDeployFailed(_ util: VTMURATUtils) {
+        print("utilDeployFailed")
+    }
+    
+    @objc(util:updateDeviceRSSI:)
+    func util(_ util: VTMURATUtils, updateDeviceRSSI RSSI: NSNumber) {
+        print("updateDeviceRSSI")
+    }
+
+}

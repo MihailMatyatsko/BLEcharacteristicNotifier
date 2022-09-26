@@ -3,4 +3,102 @@
    uuid = "EA071172-4525-4D47-8AA7-F9640BF831A5"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F71A22CD-ACC9-428B-AB5A-2B8B863069AB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NotifyCharacteristicsBLEChange/Scenes/MainBLEController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "peripheral(_:didDiscoverServices:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F71A22CD-ACC9-428B-AB5A-2B8B863069AB - 2a5530baeb78d217"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NotifyCharacteristicsBLEChange.MainBLEController.peripheral(_: __C.CBPeripheral, didDiscoverServices: Swift.Optional&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "NotifyCharacteristicsBLEChange"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mihaelmatyatsko/Documents/StudyingProjectsAndMaterials/UI/NotifyCharacteristicsBLEChange/NotifyCharacteristicsBLEChange/Scenes/MainBLEController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "240"
+                  endingLineNumber = "240"
+                  offsetFromSymbolStart = "268">
+               </Location>
+               <Location
+                  uuid = "F71A22CD-ACC9-428B-AB5A-2B8B863069AB - 2a5530baeb78d217"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NotifyCharacteristicsBLEChange.MainBLEController.peripheral(_: __C.CBPeripheral, didDiscoverServices: Swift.Optional&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "NotifyCharacteristicsBLEChange"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mihaelmatyatsko/Documents/StudyingProjectsAndMaterials/UI/NotifyCharacteristicsBLEChange/NotifyCharacteristicsBLEChange/Scenes/MainBLEController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "240"
+                  endingLineNumber = "240"
+                  offsetFromSymbolStart = "320">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "080685D8-9345-4ECB-B6D7-624C57711793"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NotifyCharacteristicsBLEChange/Scenes/MainBLEController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "peripheral(_:didDiscoverCharacteristicsFor:error:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "080685D8-9345-4ECB-B6D7-624C57711793 - b8f20f5ce9951fa2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NotifyCharacteristicsBLEChange.MainBLEController.peripheral(_: __C.CBPeripheral, didDiscoverCharacteristicsFor: __C.CBService, error: Swift.Optional&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "NotifyCharacteristicsBLEChange"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mihaelmatyatsko/Documents/StudyingProjectsAndMaterials/UI/NotifyCharacteristicsBLEChange/NotifyCharacteristicsBLEChange/Scenes/MainBLEController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "251"
+                  endingLineNumber = "251"
+                  offsetFromSymbolStart = "292">
+               </Location>
+               <Location
+                  uuid = "080685D8-9345-4ECB-B6D7-624C57711793 - b8f20f5ce9951fa2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NotifyCharacteristicsBLEChange.MainBLEController.peripheral(_: __C.CBPeripheral, didDiscoverCharacteristicsFor: __C.CBService, error: Swift.Optional&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "NotifyCharacteristicsBLEChange"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mihaelmatyatsko/Documents/StudyingProjectsAndMaterials/UI/NotifyCharacteristicsBLEChange/NotifyCharacteristicsBLEChange/Scenes/MainBLEController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "251"
+                  endingLineNumber = "251"
+                  offsetFromSymbolStart = "348">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
