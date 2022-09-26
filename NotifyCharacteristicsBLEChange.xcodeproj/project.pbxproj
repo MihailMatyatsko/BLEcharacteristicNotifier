@@ -9,21 +9,32 @@
 /* Begin PBXBuildFile section */
 		6B0C8FF928DC7B44005F4EFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C8FF828DC7B44005F4EFF /* AppDelegate.swift */; };
 		6B0C8FFB28DC7B44005F4EFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C8FFA28DC7B44005F4EFF /* SceneDelegate.swift */; };
-		6B0C8FFD28DC7B44005F4EFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C8FFC28DC7B44005F4EFF /* ViewController.swift */; };
-		6B0C900028DC7B44005F4EFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0C8FFE28DC7B44005F4EFF /* Main.storyboard */; };
+		6B0C8FFD28DC7B44005F4EFF /* MainBLEController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C8FFC28DC7B44005F4EFF /* MainBLEController.swift */; };
 		6B0C900228DC7B48005F4EFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B0C900128DC7B48005F4EFF /* Assets.xcassets */; };
 		6B0C900528DC7B48005F4EFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0C900328DC7B48005F4EFF /* LaunchScreen.storyboard */; };
+		6B0C901228DC7FA0005F4EFF /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C900F28DC7F9F005F4EFF /* UITableView+Extensions.swift */; };
+		6B0C901328DC7FA0005F4EFF /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C901028DC7FA0005F4EFF /* UIViewController+Extensions.swift */; };
+		6B0C901428DC7FA0005F4EFF /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C901128DC7FA0005F4EFF /* UICollectionView+Extension.swift */; };
+		6B0C901728DC817B005F4EFF /* MainBLEController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B0C901628DC817B005F4EFF /* MainBLEController.xib */; };
+		6B3CF4CD28DDDBD400C5895E /* VTMProductLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3CF4CC28DDDBD400C5895E /* VTMProductLib.framework */; };
+		6B3CF4D328DDDD2B00C5895E /* VTMProductUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3CF4D228DDDD2B00C5895E /* VTMProductUtilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6B0C8FF528DC7B44005F4EFF /* NotifyCharacteristicsBLEChange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotifyCharacteristicsBLEChange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B0C8FF828DC7B44005F4EFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B0C8FFA28DC7B44005F4EFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6B0C8FFC28DC7B44005F4EFF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6B0C8FFF28DC7B44005F4EFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6B0C8FFC28DC7B44005F4EFF /* MainBLEController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBLEController.swift; sourceTree = "<group>"; };
 		6B0C900128DC7B48005F4EFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B0C900428DC7B48005F4EFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B0C900628DC7B48005F4EFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B0C900F28DC7F9F005F4EFF /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		6B0C901028DC7FA0005F4EFF /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		6B0C901128DC7FA0005F4EFF /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		6B0C901528DC80FE005F4EFF /* NotifyCharacteristicsBLEChange.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotifyCharacteristicsBLEChange.entitlements; sourceTree = "<group>"; };
+		6B0C901628DC817B005F4EFF /* MainBLEController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainBLEController.xib; sourceTree = "<group>"; };
+		6B3CF4CC28DDDBD400C5895E /* VTMProductLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VTMProductLib.framework; sourceTree = "<group>"; };
+		6B3CF4D228DDDD2B00C5895E /* VTMProductUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VTMProductUtilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B3CF4CD28DDDBD400C5895E /* VTMProductLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,7 +53,9 @@
 			isa = PBXGroup;
 			children = (
 				6B0C8FF728DC7B44005F4EFF /* NotifyCharacteristicsBLEChange */,
+				6B3CF4D128DDDD2B00C5895E /* VTMProductUtilities */,
 				6B0C8FF628DC7B44005F4EFF /* Products */,
+				6B3CF4C728DDD9DA00C5895E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +70,59 @@
 		6B0C8FF728DC7B44005F4EFF /* NotifyCharacteristicsBLEChange */ = {
 			isa = PBXGroup;
 			children = (
-				6B0C8FF828DC7B44005F4EFF /* AppDelegate.swift */,
-				6B0C8FFA28DC7B44005F4EFF /* SceneDelegate.swift */,
-				6B0C8FFC28DC7B44005F4EFF /* ViewController.swift */,
-				6B0C8FFE28DC7B44005F4EFF /* Main.storyboard */,
-				6B0C900128DC7B48005F4EFF /* Assets.xcassets */,
+				6B0C901528DC80FE005F4EFF /* NotifyCharacteristicsBLEChange.entitlements */,
+				6B0C900C28DC7B7B005F4EFF /* Scenes */,
+				6B0C900E28DC7DD2005F4EFF /* Extensions */,
+				6B0C900D28DC7B84005F4EFF /* Resources */,
 				6B0C900328DC7B48005F4EFF /* LaunchScreen.storyboard */,
-				6B0C900628DC7B48005F4EFF /* Info.plist */,
 			);
 			path = NotifyCharacteristicsBLEChange;
+			sourceTree = "<group>";
+		};
+		6B0C900C28DC7B7B005F4EFF /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				6B0C8FFC28DC7B44005F4EFF /* MainBLEController.swift */,
+				6B0C901628DC817B005F4EFF /* MainBLEController.xib */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		6B0C900D28DC7B84005F4EFF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6B0C8FF828DC7B44005F4EFF /* AppDelegate.swift */,
+				6B0C8FFA28DC7B44005F4EFF /* SceneDelegate.swift */,
+				6B0C900128DC7B48005F4EFF /* Assets.xcassets */,
+				6B0C900628DC7B48005F4EFF /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6B0C900E28DC7DD2005F4EFF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6B0C901128DC7FA0005F4EFF /* UICollectionView+Extension.swift */,
+				6B0C900F28DC7F9F005F4EFF /* UITableView+Extensions.swift */,
+				6B0C901028DC7FA0005F4EFF /* UIViewController+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6B3CF4C728DDD9DA00C5895E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B3CF4CC28DDDBD400C5895E /* VTMProductLib.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6B3CF4D128DDDD2B00C5895E /* VTMProductUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				6B3CF4D228DDDD2B00C5895E /* VTMProductUtilities.swift */,
+			);
+			path = VTMProductUtilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +183,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B0C901728DC817B005F4EFF /* MainBLEController.xib in Resources */,
 				6B0C900528DC7B48005F4EFF /* LaunchScreen.storyboard in Resources */,
 				6B0C900228DC7B48005F4EFF /* Assets.xcassets in Resources */,
-				6B0C900028DC7B44005F4EFF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +196,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B0C8FFD28DC7B44005F4EFF /* ViewController.swift in Sources */,
+				6B0C901428DC7FA0005F4EFF /* UICollectionView+Extension.swift in Sources */,
+				6B0C8FFD28DC7B44005F4EFF /* MainBLEController.swift in Sources */,
+				6B3CF4D328DDDD2B00C5895E /* VTMProductUtilities.swift in Sources */,
 				6B0C8FF928DC7B44005F4EFF /* AppDelegate.swift in Sources */,
+				6B0C901328DC7FA0005F4EFF /* UIViewController+Extensions.swift in Sources */,
 				6B0C8FFB28DC7B44005F4EFF /* SceneDelegate.swift in Sources */,
+				6B0C901228DC7FA0005F4EFF /* UITableView+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6B0C8FFE28DC7B44005F4EFF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6B0C8FFF28DC7B44005F4EFF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6B0C900328DC7B48005F4EFF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,7 +270,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +324,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -285,16 +339,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NotifyCharacteristicsBLEChange/NotifyCharacteristicsBLEChange.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZG6975UKG7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NotifyCharacteristicsBLEChange/Info.plist;
+				INFOPLIST_FILE = NotifyCharacteristicsBLEChange/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,16 +371,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NotifyCharacteristicsBLEChange/NotifyCharacteristicsBLEChange.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZG6975UKG7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NotifyCharacteristicsBLEChange/Info.plist;
+				INFOPLIST_FILE = NotifyCharacteristicsBLEChange/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
